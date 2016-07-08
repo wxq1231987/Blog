@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mbatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxq.blog.entity.userMapper">
+	<insert id="addUser" parameterType="com.wxq.blog.entity.User">
+		insert into user (userName,password) values(#{username},#{password})
+	</insert>
+	<delete id="deleteUser" parameterType="int">
+		delete from user where id=#{userId}
+	</delete>
+	<update id="updateUser" parameterType="com.wxq.blog.entity.User">
+		update user set Email=#{email},Introduce=#{introduce},Photo=#{photo}
+					where UserName=#{username}
+	</update>
+	<update id="updatePass" parameterType="com.wxq.blog.entity.User">
+		update user set Password=#{password} where UserName=#{username}
+	</update>
+	<select id="getUser" parameterType="string" resultType="com.wxq.blog.entity.User">
+		select * from user where UserName=#{username}
+	</select> 
+</mapper>
